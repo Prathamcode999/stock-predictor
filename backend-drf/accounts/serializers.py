@@ -1,0 +1,19 @@
+from django.contrib.auth.models import User
+from rest_framework import serializers
+
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only = True, style={'input_type':'password'}, min_length=8) #should only work with POST request, not with GET
+    class Meta:
+        model= User
+        fields= ['username','email','password']
+
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            validated_data['username'],
+            validated_data['email'],
+            validated_data['password'],
+            )
+
+        #create_user automatically hashes the password
+        #create doesnt hash the password
