@@ -14,6 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
             validated_data['email'],
             validated_data['password'],
             )
+        return user
 
         #create_user automatically hashes the password
         #create doesnt hash the password
