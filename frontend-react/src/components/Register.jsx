@@ -1,4 +1,4 @@
-import React,{use, useState} from 'react'
+import React,{useState} from 'react'
 import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSpinner} from '@fortawesome/free-solid-svg-icons'
@@ -11,7 +11,7 @@ const Register = () => {
     const [success, setSuccess] = useState(false)
     const [loading, setLoading] = useState(false)
 
-    const handleRegistration = async (e) => {
+    const handleRegistration = async (e) => { // e is passed because this function in passed in form and handling and event
         e.preventDefault() // prevents from refreshing the page
         console.log('test')
         setLoading(true)
@@ -53,7 +53,7 @@ const Register = () => {
                             <input type="password" className='form-control' placeholder='Set Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                             <small className='text-danger'>{errors.password}</small>
                         </div>
-                        {success && <div className='alert alert-success text-center '> Registration Successful</div>}
+                        {success && <div className='alert alert-success text-center'> Registration Successful</div>}
                         {loading ? (  
                             <button type='submit' className='btn btn-info d-block mx-auto'><FontAwesomeIcon icon={faSpinner} spin />Please wait...</button>
                         ):(
