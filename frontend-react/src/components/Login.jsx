@@ -10,7 +10,7 @@ const Login = () => {
   const [password,setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState('')
-  const {isLoggenIn,setIsLoggedIn} = useContext(AuthContext)
+  const {isLoggedIn,setIsLoggedIn} = useContext(AuthContext)
   const navigate = useNavigate()
 
 
@@ -29,7 +29,7 @@ const Login = () => {
       // we are storing the access and refresh token which we got from response.data in website's local storage
       console.log('logged in succesfully')
       setIsLoggedIn(true)
-      navigate('/')
+      navigate('/dashboard')
     }catch(error){
       console.error('Invalid Crediantials')
       setErrors('Invalid Crediantials')
@@ -50,7 +50,7 @@ const Login = () => {
                               <small className='text-danger'>{errors.username}</small>
                           </div>
                           <div className='mb-5'>
-                              <input type="password" className='form-control' placeholder='Set Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                              <input type="password" className='form-control' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                               <small className='text-danger'>{errors.password}</small>
                           </div>
 

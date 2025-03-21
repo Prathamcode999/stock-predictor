@@ -4,7 +4,7 @@ import { Link,useNavigate} from 'react-router-dom'
 import { AuthContext } from '../AuthProvider'
 
 const Header = () => {
-  const {isLoggenIn,setIsLoggedIn} = useContext(AuthContext)
+  const {isLoggedIn,setIsLoggedIn} = useContext(AuthContext)
   const navigate = useNavigate()
 
   const handleLogout= ()=>{
@@ -20,8 +20,12 @@ const Header = () => {
             <Link className="navbar-brand text-light" to="/">stock prediction portal</Link>
             
             <div>
-              {isLoggenIn ? (
+              {isLoggedIn ? (
+                  <>
+                  <Button text='Dasboard' class='btn-outline-info' url='/dashboard'/>
+                  &nbsp;
                   <button className='btn btn-danger' onClick={handleLogout}>logout</button>
+                  </>
               ):(
                 <>
                 <Button text='Login'class="btn-outline-info" url='/login'/>

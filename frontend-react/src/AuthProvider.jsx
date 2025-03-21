@@ -4,12 +4,12 @@ import {useState, useContext, createContext} from 'react'
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
-    const [isLoggenIn, setIsLoggedIn] = useState(
+    const [isLoggedIn, setIsLoggedIn] = useState(
         !!localStorage.getItem('accessToken') // !! makes the line boolean value, if there is accestoken then true else false
+      );
 
-    )
   return (
-    <AuthContext.Provider value={{isLoggenIn,setIsLoggedIn}}>
+    <AuthContext.Provider value={{isLoggedIn,setIsLoggedIn}}>
         {children}
     </AuthContext.Provider>
   )

@@ -7,9 +7,11 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import AuthProvider from './AuthProvider'
+import Dashboard from './components/dashboard/Dashboard'
+import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -17,9 +19,11 @@ function App() {
       <BrowserRouter>
       <Header/>
         <Routes>
-          <Route path='/' element={<Main/>} />
-          <Route path='/register' element={<Register/>}/>
-          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={<PublicRoute><Main/></PublicRoute>} />
+          <Route path='/register' element={<PublicRoute><Register/></PublicRoute>}/>
+          <Route path='/login' element={<PublicRoute><Login/></PublicRoute>}/>
+          <Route path='/dashboard' element={<PrivateRoute><Dashboard/></PrivateRoute>} /> 
+          {/* we have passed private route so that the user cannot access the dashboard from addresbar even if in logout condition */}
         </Routes>
       <Footer/>
       </BrowserRouter>
